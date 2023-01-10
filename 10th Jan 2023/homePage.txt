@@ -1,0 +1,2 @@
+Hello, I'm Prathap Chandra. This is a tutorial on Git and Github.
+Current date and time is 10th Jan 2023, 09:10 PM.
