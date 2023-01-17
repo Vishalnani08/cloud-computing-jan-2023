@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd or Even Program</title>
+</head>
+<body>
+    <center>
+        <h4 id="answer"></h4>
+        <input type="date" name="dob" id="dob">
+        <br><br>
+        <input type="submit" value="calculateAge" onclick="calculateAge()">
+    </center>
+
+    <script>
+        function calculateAge() {
+            const currentDate = new Date();
+            const dobOfUser = new Date(document.getElementById('dob').value);
+            const datesDifferenceInMilliSeconds = currentDate.getTime() - dobOfUser.getTime();
+            const datesDifferenceInDays = datesDifferenceInMilliSeconds / (1000 * 60 * 60 * 24);
+            const datesDifferenceInYears = datesDifferenceInDays / 365;
+            document.getElementById('answer').innerText = datesDifferenceInYears.toFixed(2);
+        }
+    </script>
+</body>
+</html>
