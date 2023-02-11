@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <center>
+        <br><br><br>
+        <input type="number" class="inputs" name="firstNumber" placeholder="Enter first number" id="firstNumber">
+        <br><br>
+        <input type="number" class="inputs" name="secondNumber" placeholder="Enter second number" id="secondNumber">
+        <br><br>
+        <input type="submit" value="Calculate" onclick="calculator()">
+    </center>
+
+    <script>
+        function sumOfTwoNumbers(firstNumber, secondNumber) {
+            let sum = firstNumber + secondNumber;
+            console.log(`Sum of two numbers: ${sum}`);
+        };
+
+        function subtractionOfTwoNumbers(firstNumber, secondNumber) {
+            let subtraction = firstNumber - secondNumber;
+            console.log(`Subtraction of two numbers: ${subtraction}`);
+        };
+
+        function divisionOfTwoNumbers(firstNumber, secondNumber) {
+            let division = firstNumber / secondNumber;
+            console.log(`Division of two numbers: ${division}`);
+        };
+
+        function productOfTwoNumbers(firstNumber, secondNumber) {
+            let product = firstNumber * secondNumber;
+            console.log(`Product of two numbers: ${product}`);
+        };
+
+        function calculator() {
+            const firstNumber = Number(document.getElementsByClassName('inputs')[0].value);
+            const secondNumber = Number(document.getElementsByClassName('inputs')[1].value);
+
+            sumOfTwoNumbers(firstNumber, secondNumber);
+            subtractionOfTwoNumbers(firstNumber, secondNumber);
+            divisionOfTwoNumbers(firstNumber, secondNumber);
+            productOfTwoNumbers(firstNumber, secondNumber);
+        }
+    </script>
+</body>
+
+</html>
