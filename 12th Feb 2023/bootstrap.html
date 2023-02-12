@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Camazon</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <span>Total Price: </span>
+                            <span class="total-price">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <hr>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="one.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Nike</h5>
+                        <p class="card-text">Brand new nike shoes made of leather.</p>
+                        <div>
+                            <span>Price: </span>
+                            <span class="text-muted" id="product-one-price">1000</span>
+                            <br>
+                            <span>Qty: </span>
+                            <span id="product-one-quantity">0</span>
+                        </div>
+                        <!-- <p class="card-text">
+                            <span>Qty: </span>
+                            <span id="product-one-quantity">0</span>
+                        </p> -->
+                    </div>
+                    <div style="margin: 10px;">
+                        <center>
+                            <button type="button" id="product-one-add" class="btn btn-outline-success product-one-add"
+                                onclick="productQty()">+</button>
+                            <button type="button" id="product-one-delete"
+                                class="btn btn-outline-danger product-one-delete" onclick="productQty()">-</button>
+                        </center>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="two.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Adidas</h5>
+                        <p class="card-text">Currently trending comfortable shoes</p>
+                        <div>
+                            <span>Price: </span>
+                            <span class="text-muted" id="product-two-price">2999</span>
+                            <br>
+                            <span>Qty: </span>
+                            <span id="product-two-quantity">0</span>
+                        </div>
+                    </div>
+                    <div style="margin: 10px;">
+                        <center>
+                            <button type="button" id="product-two-add" class="btn btn-outline-success product-two-add"
+                                onclick="productQty()">+</button>
+                            <button type="button" id="product-two-delete"
+                                class="btn btn-outline-danger product-two-delete" onclick="productQty()">-</button>
+                        </center>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="three.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Redtape</h5>
+                        <p class="card-text">Good for your morning walk and gym</p>
+                        <div>
+                            <span>Price: </span>
+                            <span class="text-muted" id="product-three-price">1789</span>
+                            <br>
+                            <span>Qty: </span>
+                            <span id="product-three-quantity">0</span>
+                        </div>
+                    </div>
+                    <div style="margin: 10px;">
+                        <center>
+                            <button type="button" id="product-three-add"
+                                class="btn btn-outline-success product-three-add" onclick="productQty()">+</button>
+                            <button type="button" id="product-three-delete"
+                                class="btn btn-outline-danger product-three-delete" onclick="productQty()">-</button>
+                        </center>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="d-grid gap-2">
+            <button class="btn btn-success" type="button">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        function productQty() {
+            document.addEventListener('click', (e) => {
+                const productId = e.target.id;
+                switch (productId) {
+                    case 'product-one-add': {
+                        const currentQty = Number(document.getElementById('product-one-quantity').innerText);
+                        document.getElementById('product-one-quantity').innerText = currentQty+1; 
+                        break;
+                    }
+                    case 'product-one-delete': {
+                        const currentQty = Number(document.getElementById('product-one-quantity').innerText);
+                        if (currentQty > 0) {
+                            document.getElementById('product-one-quantity').innerText = currentQty-1; 
+                        }
+                        break;
+                    }
+                    case 'product-two-add': {
+                        const currentQty = Number(document.getElementById('product-two-quantity').innerText);
+                        document.getElementById('product-two-quantity').innerText = currentQty+1;
+                        break;
+                    }
+                    case 'product-two-delete': {
+                        const currentQty = Number(document.getElementById('product-two-quantity').innerText);
+                        if (currentQty > 0) {
+                            document.getElementById('product-two-quantity').innerText = currentQty-1; 
+                        }
+                        break;
+                    }
+                    case 'product-three-add': {
+                        const currentQty = Number(document.getElementById('product-three-quantity').innerText);
+                        document.getElementById('product-three-quantity').innerText = currentQty+1;
+                        break;
+                    }
+                    case 'product-three-delete': {
+                        const currentQty = Number(document.getElementById('product-three-quantity').innerText);
+                        if (currentQty > 0) {
+                            document.getElementById('product-three-quantity').innerText = currentQty-1; 
+                        }
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
