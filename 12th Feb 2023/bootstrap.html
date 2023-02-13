@@ -11,6 +11,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <title>Document</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">
                             <span>Total Price: </span>
-                            <span class="total-price">0</span>
+                            <span id="total-price">0</span>
                         </a>
                     </li>
                 </ul>
@@ -65,9 +66,9 @@
                     <div style="margin: 10px;">
                         <center>
                             <button type="button" id="product-one-add" class="btn btn-outline-success product-one-add"
-                                onclick="productQty()">+</button>
+                               >+</button>
                             <button type="button" id="product-one-delete"
-                                class="btn btn-outline-danger product-one-delete" onclick="productQty()">-</button>
+                                class="btn btn-outline-danger product-one-delete">-</button>
                         </center>
                     </div>
                     <div class="card-footer">
@@ -92,9 +93,9 @@
                     <div style="margin: 10px;">
                         <center>
                             <button type="button" id="product-two-add" class="btn btn-outline-success product-two-add"
-                                onclick="productQty()">+</button>
+                               >+</button>
                             <button type="button" id="product-two-delete"
-                                class="btn btn-outline-danger product-two-delete" onclick="productQty()">-</button>
+                                class="btn btn-outline-danger product-two-delete">-</button>
                         </center>
                     </div>
                     <div class="card-footer">
@@ -119,9 +120,9 @@
                     <div style="margin: 10px;">
                         <center>
                             <button type="button" id="product-three-add"
-                                class="btn btn-outline-success product-three-add" onclick="productQty()">+</button>
+                                class="btn btn-outline-success product-three-add">+</button>
                             <button type="button" id="product-three-delete"
-                                class="btn btn-outline-danger product-three-delete" onclick="productQty()">-</button>
+                                class="btn btn-outline-danger product-three-delete">-</button>
                         </center>
                     </div>
                     <div class="card-footer">
@@ -133,56 +134,102 @@
 
         <hr>
         <div class="d-grid gap-2">
-            <button class="btn btn-success" type="button">Checkout</button>
+            <button class="btn btn-success" type="button">
+                <a href="https://rzp.io/i/3nx8Lxld" style="color: whitesmoke; text-decoration: none;" target="_blank">Checkout</a>
+                <!-- Checkout -->
+            </button>
         </div>
     </div>
 
     <script>
-        function productQty() {
-            document.addEventListener('click', (e) => {
-                const productId = e.target.id;
-                switch (productId) {
-                    case 'product-one-add': {
-                        const currentQty = Number(document.getElementById('product-one-quantity').innerText);
-                        document.getElementById('product-one-quantity').innerText = currentQty+1; 
-                        break;
-                    }
-                    case 'product-one-delete': {
-                        const currentQty = Number(document.getElementById('product-one-quantity').innerText);
-                        if (currentQty > 0) {
-                            document.getElementById('product-one-quantity').innerText = currentQty-1; 
-                        }
-                        break;
-                    }
-                    case 'product-two-add': {
-                        const currentQty = Number(document.getElementById('product-two-quantity').innerText);
-                        document.getElementById('product-two-quantity').innerText = currentQty+1;
-                        break;
-                    }
-                    case 'product-two-delete': {
-                        const currentQty = Number(document.getElementById('product-two-quantity').innerText);
-                        if (currentQty > 0) {
-                            document.getElementById('product-two-quantity').innerText = currentQty-1; 
-                        }
-                        break;
-                    }
-                    case 'product-three-add': {
-                        const currentQty = Number(document.getElementById('product-three-quantity').innerText);
-                        document.getElementById('product-three-quantity').innerText = currentQty+1;
-                        break;
-                    }
-                    case 'product-three-delete': {
-                        const currentQty = Number(document.getElementById('product-three-quantity').innerText);
-                        if (currentQty > 0) {
-                            document.getElementById('product-three-quantity').innerText = currentQty-1; 
-                        }
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            });
+        function updateTotalPrice() {
+            // let totalPrice = Number(document.getElementById('total-price').innerText);
+            let totalPrice = 0;
+            console.log('totalPrice: ', totalPrice)
+            
+            const currentProductOneQty = Number(document.getElementById('product-one-quantity').innerText);
+            console.log('currentProductOneQty: ', currentProductOneQty)
+            const currentProductTwoQty = Number(document.getElementById('product-two-quantity').innerText);
+            console.log('currentProductTwoQty: ', currentProductTwoQty)
+            const currentProductThreeQty = Number(document.getElementById('product-three-quantity').innerText);
+            console.log('currentProductThreeQty: ', currentProductThreeQty)
+
+            const currentProductOnePrice = Number(document.getElementById('product-one-price').innerText);
+            console.log('currentProductOnePrice: ', currentProductOnePrice)
+            const currentProductTwoPrice = Number(document.getElementById('product-two-price').innerText);
+            console.log('currentProductTwoPrice: ', currentProductTwoPrice)
+            const currentProductThreePrice = Number(document.getElementById('product-three-price').innerText);
+            console.log('currentProductThreePrice: ', currentProductThreePrice)
+
+            if (currentProductOneQty * currentProductOnePrice > 0) {
+                totalPrice = totalPrice + currentProductOneQty * currentProductOnePrice;
+            } 
+            console.log('totalPrice for p1: ', totalPrice)
+
+            if (currentProductTwoQty * currentProductTwoPrice > 0) {
+                totalPrice = totalPrice + currentProductTwoQty * currentProductTwoPrice;
+            } 
+            console.log('totalPrice for p2: ', totalPrice)
+
+            if (currentProductThreeQty * currentProductThreePrice > 0) {
+                totalPrice = totalPrice + currentProductThreeQty * currentProductThreePrice;
+            } 
+            console.log('totalPrice for p3: ', totalPrice)
+
+            console.log('totalPrice final: ', totalPrice)
+            document.getElementById('total-price').innerText = totalPrice;
         }
+
+        document.addEventListener('click', (e) => {
+            const productId = e.target.id;
+            switch (productId) {
+                case 'product-one-add': {
+                    const currentQty = Number(document.getElementById('product-one-quantity').innerText);
+                    document.getElementById('product-one-quantity').innerText = currentQty + 1;
+                    updateTotalPrice();
+                    break;
+                }
+                case 'product-one-delete': {
+                    const currentQty = Number(document.getElementById('product-one-quantity').innerText);
+                    if (currentQty > 0) {
+                        document.getElementById('product-one-quantity').innerText = currentQty - 1;
+                    }
+                    updateTotalPrice();
+                    break;
+                }
+                case 'product-two-add': {
+                    const currentQty = Number(document.getElementById('product-two-quantity').innerText);
+                    document.getElementById('product-two-quantity').innerText = currentQty + 1;
+                    updateTotalPrice();
+                    break;
+                }
+                case 'product-two-delete': {
+                    const currentQty = Number(document.getElementById('product-two-quantity').innerText);
+                    if (currentQty > 0) {
+                        document.getElementById('product-two-quantity').innerText = currentQty - 1;
+                    }
+                    updateTotalPrice();
+                    break;
+                }
+                case 'product-three-add': {
+                    const currentQty = Number(document.getElementById('product-three-quantity').innerText);
+                    document.getElementById('product-three-quantity').innerText = currentQty + 1;
+                    updateTotalPrice();
+                    break;
+                }
+                case 'product-three-delete': {
+                    const currentQty = Number(document.getElementById('product-three-quantity').innerText);
+                    if (currentQty > 0) {
+                        document.getElementById('product-three-quantity').innerText = currentQty - 1;
+                    }
+                    updateTotalPrice();
+                    break;
+                }
+                default:
+                    break;
+            }
+        });
+
     </script>
 </body>
 
