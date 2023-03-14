@@ -64,6 +64,8 @@ server {
 
 sudo ln -s /etc/nginx/sites-available/rajeshwari.conf /etc/nginx/sites-enabled/
 
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
 
 
 
@@ -72,18 +74,20 @@ sudo ln -s /etc/nginx/sites-available/rajeshwari.conf /etc/nginx/sites-enabled/
 
 
 server {  
-    listen 9876;
-    server_name meghana;
+    listen 5476;
+    server_name sunday;
 
     root /var/www/html;
-    index meghana.html;
+    index sunday.html;
 
     location / {
         try_files $uri $uri/ =404;
     }
 }
 
-sudo ln -s /etc/nginx/sites-available/meghana.conf /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/sunday.conf /etc/nginx/sites-enabled/
+
+sudo ln -s -f /etc/nginx/sites-available/sunday.conf /etc/nginx/sites-enabled/
 
 
 <!DOCTYPE html>
@@ -103,7 +107,7 @@ sudo ln -s /etc/nginx/sites-available/meghana.conf /etc/nginx/sites-enabled/
 <body>
     <center>
         <br><br><br>
-        <h1>Hello I'm Meghana</h1>
+        <h1>Today is Sunday. No one is active in the class. They're in a weekend mode</h1>
         <br><br><br>
     </center>
 </body>
