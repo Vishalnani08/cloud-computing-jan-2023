@@ -10,12 +10,15 @@ const html = `<!DOCTYPE html>
         body {
             background-color: black;
             color: whitesmoke;
+            // background-image: url('https://todo-app-cc.s3.ap-south-1.amazonaws.com/david-marcu-78A265wPiO4-unsplash.jpg');
+            // opacity: 1%;
         }
     </style>
 </head>
 
 <body>
     <center>
+    <img src="https://todo-app-cc.s3.ap-south-1.amazonaws.com/david-marcu-78A265wPiO4-unsplash.jpg" alt="Test Image" height="25%" width="100%">
         <br><br>
         <form action="/todos" method="POST">
             <label for="todo_task">Add your Todo Task</label>
