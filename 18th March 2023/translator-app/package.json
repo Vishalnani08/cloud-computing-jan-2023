@@ -1,0 +1,14 @@
+{
+  "name": "translator-app",
+  "version": "1.0.0",
+  "description": "This is a simple text translator app for different languages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prathap Chandra",
+  "license": "ISC",
+  "dependencies": {
+    "translate-google": "^1.5.0"
+  }
+}

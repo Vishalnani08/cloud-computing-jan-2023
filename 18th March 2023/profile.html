@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align:center">User Profile Card</h2>
+
+    <div class="card">
+        <img id="userImage" src="https://www.w3schools.com/howto/img_avatar.png" alt="John" style="width:100%">
+        <h1 id="userName">John Doe</h1>
+        <p class="title" id="userTitle">CEO & Founder, Example</p>
+        <p id="userCollege">Harvard University</p>
+        <div style="margin: 24px 0;">
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+        </div>
+        <p><button>Contact</button></p>
+
+        <script>
+            function updateUserProfile() {
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    redirect: 'follow',
+                    // json: true
+                };
+
+                fetch("https://5e86-49-204-11-61.in.ngrok.io/profile", requestOptions)
+                    .then(response => response.text())
+                    .then(result => {
+                        console.log(result);
+                        document.getElementById('userImage').src = result
+                    })
+                    .catch(error => console.log('error', error));
+            }
+
+            setTimeout(() => {
+                updateUserProfile();
+            }, 5000);
+        </script>
+    </div>
+
+</body>
+
+</html>

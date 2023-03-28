@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            background-color: black;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <br><br>
+        <form action="/todos" method="POST">
+            <label for="todo_task">Add your Todo Task</label>
+            <br><br>
+            <input type="text" id="todo_task" name="todo_task">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <br>
+        <hr>
+        <h3>Todo List</h3>
+        <ul id="list"></ul>
+
+
+        <script>
+            function getTodosList() {
+                const requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                fetch("http://localhost:9600/todos", requestOptions)
+                    .then(response => response.json())
+                    .then(todos => {
+                        const list = document.getElementById('list');
+                        todos.forEach(todo => {
+                            const li = document.createElement('li');
+                            li.textContent = todo.id + ' - ' + todo.todo_task + ' - ' + new Date(todo.created_at).toLocaleDateString();
+                            list.appendChild(li);
+                        });
+                    })
+                    .catch(error => console.log('error', error));
+            }
+            getTodosList();
+        </script>
+    </center>
+</body>
+
+</html>
